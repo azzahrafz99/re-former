@@ -1,6 +1,12 @@
 <h1>User Page </h1>
 
-<%= link_to 'Create User', new_user_path %>
+<% if logged_in? %>
+  <%= link_to 'Create User', new_user_path %>
+  <%= link_to 'Create Post', new_post_path %>
+  <%= link_to 'Logout', logout_path %>
+<% else %>
+  <%= link_to 'Sign In', sign_in_path %>
+<% end %>
 
 <table>
   <tr>
