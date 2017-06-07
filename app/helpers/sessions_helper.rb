@@ -36,4 +36,11 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def restrict_to_signed_in
+    unless logged_in?
+      session[:return_to] = request.url if request.get?
+      redirect_to sign_in_path, notice: "Please sign in"
+    end
+  end
 end

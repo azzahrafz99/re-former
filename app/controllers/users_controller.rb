@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	before_action :restrict_to_signed_in, only: [:index, :new, :create]
+
 	def index
 		@users = User.all
 	end
@@ -34,6 +36,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
+		params.require(:user).permit(:username,:email,:password_digest)
 		params.require(:user).permit(:username,:email,:password, :password_confirmation)
 	end
 

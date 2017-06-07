@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :restrict_to_signed_in, only: [:index, :new, :create]
+
   def index
     @posts = Post.all
   end

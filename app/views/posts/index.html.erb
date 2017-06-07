@@ -1,5 +1,7 @@
 <h1>Post Page</h1>
-
+<% if logged_in? %>
+  <%= link_to 'Logout', logout_path %>
+<% end %>
 <ul id="posts">
   <% @posts.each do |post| %>
     <li>
